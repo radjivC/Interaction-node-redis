@@ -97,3 +97,13 @@ require('api-easy')
 
 // Export tests for Vows
 .export(module)
+
+
+
+if (module.parent === null) {
+  app.listen(3000);
+  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+}
+
+Notez qu’on fait les choses bien et que c’est le test lui-même qui est chargé de démarrer et d’arrêter le serveur, ce qui nous permet d’avoir une configuration dédiée aux tests (port différent, et plus tard base différente par exemple). Sauf qu’en l’état, notre application démarre immédiatement, du coup quand on appelle listen(), ça foire un peu
+On exécute les tests avec Vows qui est une dépendance de APIEasy, on trouve donc son binaire dans ./node_modules/api-easy/node_modules/.bin. Évidemment, ils échouent tous pour l’instant:
