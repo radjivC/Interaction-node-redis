@@ -85,39 +85,19 @@ exports.deleteUnicorn = function(req, res) {
 }
 
 exports.deleteAll = function(req, res) {
-    var id = req.params.id;
-    function deleteOne (id, callback) {
-      client.del(_key_(id), function (err, deleted) {
-        if (!err && deleted == 0) err = {"message": "unicorn not found", "type":"ENOTFOUND"};
-        callback(err, deleted > 0);
+  var self = this;
+  client.keys(_key_('*'), function (err, keys) {
+    if (err) return callback(err);
+    var deleteSequence = function deleteSequence (err, deleted) {
+      if (err) return callback(err);
+      client.del(_seq_(), function (err, seq_deleted) {
+        callback(err, deleted > 0 || seq_deleted > 0);
       });
     }
+    if (keys.length) {
+      client.del(keys, deleteSequence);
+    } else {
+      deleteSequence(undefined, 0);
+    }
+  });
 }
-
-
-
-
-
-
-
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-// Populate database with sample data -- Only used once: the first time the application is started.
-// You'd typically not find this code in a real-life app, since the database would already exist.
-var populateDB = function() {
-
-    var unicorns = [
-    {
-      "name":"charlie",
-      "birthday": "02/10/2010",
-      "status":"sleepy"
-    },
-    {
-        "name":"sam",
-        "birthday": "02/10/2012",
-        "status":"exited"
-    }];
-
-
-
-};
