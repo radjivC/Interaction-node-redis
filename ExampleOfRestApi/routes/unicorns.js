@@ -1,28 +1,27 @@
 var redis = require('redis');
-var client = redis.createClient();
+var client = redis.createClient(), namespace = 'unicorns';
 
-var client = new Server();
-
-});
 
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving unicorn: ' + id);
 
-    function fetchOne (id, callback) {
-      client.get(_key_(id), function (err, value) {
+    function fetchOne (id, callback)
+    {
+      client.get(_key_(id), function (err, value)
+      {
         if (!err && !value) err = {"message": "Unicorn not found", "type":"ENOTFOUND"};
         if (err) return callback(err);
         var unicorn = null;
         try {
           unicorn = JSON.parse(value);
-        } catch (e) {
+        }
+        catch (e) {
           return callback(e);
         }
         return callback(undefined, unicorn);
       });
     }
-
 };
 
 exports.findAll = function(req, res) {
@@ -64,7 +63,7 @@ exports.addUnicorn = function(req, res) {
       }
     }
 
-}
+};
 
 exports.updateUnicorn = function(req, res) {
     var id = req.params.id;
@@ -72,7 +71,7 @@ exports.updateUnicorn = function(req, res) {
     console.log('Updating unicorn: ' + id);
     console.log(JSON.stringify(unicorn));
 
-}
+};
 
 exports.deleteUnicorn = function(req, res) {
     var id = req.params.id;
@@ -82,7 +81,7 @@ exports.deleteUnicorn = function(req, res) {
         callback(err, deleted > 0);
       });
     }
-}
+};
 
 exports.deleteAll = function(req, res) {
   var self = this;

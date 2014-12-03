@@ -3,10 +3,10 @@ var express = require('express'),
 
 var app = express();
 
-app.configure(function () {
-    app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
-    app.use(express.bodyParser());
-});
+// app.configure(function () {
+//     app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
+//     app.use(express.bodyParser());
+// });
 
 app.get('/unicorns', unicorn.findAll);
 app.get('/unicorns/:id', unicorn.findById);
