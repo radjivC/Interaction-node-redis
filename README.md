@@ -1,6 +1,8 @@
 Interaction Redis (V2.8) with node.js
 =====================================
 
+But I'm already building, please wait
+
 In lib folder you have different files with interaction example how to use redis with Nodejs.
 
 Every files can work independant.
@@ -13,8 +15,8 @@ Don't forget to install the package for the REST Api:
 npm install
 ```
 
-In the lib folder you have separate example to show: how to use the each functions of mongoDb.
-In the lib coffee script folder you have separate example to show: how to use the each functions of mongoDb but with coffeescript syntax.
+In the lib folder you have separate example to show: how to use the each functions for Redis.
+In the lib coffee script folder you have separate example to show: how to use the each functions for Redis but with coffeescript syntax.
 
 You have a Rest Api example in the folder RestAPiExample, this is a global example how to use MongoDb in a real case.
 And of course the same Api with coffee Script syntax.
