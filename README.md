@@ -14,7 +14,7 @@ npm install
 
 In the lib folder you have separate example to show: how to use the each functions for Redis.
 
-You have a Rest Api example in the folder RestAPiExample, this is a global example how to use MongoDb in a real case.
+You have a Rest Api example in the folder RestAPiExample, this is a global example how to use Redis in a real case.
 And of course the same Api with coffee Script syntax.
 
 What is Redis?
